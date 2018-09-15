@@ -3,8 +3,8 @@ body{
     padding: 7.5%;
     color: #ffffff;
     background-color: #232323
-
 }
+
 
 .class-name {
     font-weight: bold;
@@ -13,13 +13,50 @@ body{
 .object-type{
     color: green;
 }
-/*
-Fix colors
- */
+
 .reference-name{
-    color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+.card{
+    border: 1px  transparent;
+    outline: 0px;
+}
+
+.card:hover{
+    border: 1px solid #ffffff;
 }
 
 .card-header{
-   background-color: #1a1d21;
+   background-color: #2B2B2B;
+}
+
+.card-body{
+    background-color: #382020;
+}
+
+.object-type{
+    color: white;
+    font-family: lato;
+    font-weight:100;
+}
+
+.core{
+    border: 1px solid #939393;
+    border-radius: 4px;
+    padding: 3%;
+    position:absolute;
+    min-width: 700px;
+}
+
+.func-var-div{
+    padding-left: 5.2%;
+    padding-bottom: 2%;
+}
+
+.func-var-header{
+    padding-bottom: 1.7%;
+    font-family: lato;
+    font-weight: normal;
 }

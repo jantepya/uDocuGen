@@ -10,13 +10,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+
 </head>
 
 <body>
-<div class="core">
+<div class = "nav">
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Library</a></li>
+        <li class="active">Data</li>
+    </ol>
+
+</div>
+<div class="core" style = "z-index:0" id = "UNIQUEID">
+
     <h1 class="class-name">Class name </h1>
-    <br class="big-break">
-    <div>
+    <hr>
+    <div class = "func-var-div">
         <h3 class="func-var-header">Variables</h3>
         <div class="public-vars container">
             <div id="accordion">
@@ -45,7 +56,47 @@
         <div class="internal-vars">
         </div>
     </div>
-    <div>
+    <div class = "func-var-div">
+        <h3 class="func-var-header">Functions</h3>
+
+    </div>
+    <!--Dropdowns populated--->
+</div>
+
+<div class="core" style = "z-index:1">
+
+    <h1 class="class-name">Class name </h1>
+    <hr>
+    <div class = "func-var-div">
+        <h3 class="func-var-header">Variables</h3>
+        <div class="public-vars container">
+            <div id="accordion">
+
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                            <p class = "object-type" style="display:inline">GameObject</p>  <p class = "reference-name" style="display:inline">Thingy</p>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                            Test d
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="private-vars">
+
+        </div>
+        <div class="protected-vars">
+
+        </div>
+        <div class="internal-vars">
+        </div>
+    </div>
+    <div class = "func-var-div">
         <h3 class="func-var-header">Functions</h3>
 
     </div>
