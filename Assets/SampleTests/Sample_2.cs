@@ -9,9 +9,15 @@ using UnityEngine;
 public class Sample_2 : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
 	}
+
+    void dss(char g)
+    {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

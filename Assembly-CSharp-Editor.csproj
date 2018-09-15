@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\Document.cs" />
+     <Compile Include="Assets\Editor\Obj.cs" />
      <Compile Include="Assets\Editor\uDocGenInterface.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Jon/Desktop/v1/uDocuGen/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
