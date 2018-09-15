@@ -44,7 +44,9 @@
 
 # card_content
     <div class="card-header">
-        <a class="card-link" data-toggle="collapse" href="#collapseOne"> #big_description</a>
+        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+            <p class = "object-type" style="display:inline">#object_type</p>  <p class = "reference-name" style="display:inline">#ref_name</p>
+        </a>
     </div>
     <div id="#collapseName" class="collapse show" data-parent="#accordion">
         <div class="card-body">

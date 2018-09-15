@@ -10,5 +10,16 @@ body{
     font-weight: bold;
 }
 
-.core {
+.object-type{
+    color: green;
+}
+/*
+Fix colors
+ */
+.reference-name{
+    color: blue;
+}
+
+.card-header{
+   background-color: #1a1d21;
 }
