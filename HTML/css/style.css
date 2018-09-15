@@ -5,13 +5,30 @@ body{
     background-color: #232323
 }
 
+.files{
+    padding: 1.5%;
+    margin: 0.2%;
+    border-radius: 4px;
+    background-color: #2B2B2B;
+    font-size: 20px;
+}
+
+.files-description{
+    padding: 1.5%;
+    margin: 0.2%;
+    border-radius: 4px;
+    background-color: #2B2B2B;
+    font-size: 20px;
+}
+
+.files:hover{
+    border: 1px solid #ffffff;
+    background-color:#3f3f3f;
+}
 
 .class-name {
     font-weight: bold;
-}
-
-.object-type{
-    color: green;
+    font-size: 45px;
 }
 
 .reference-name{
@@ -30,10 +47,12 @@ body{
 
 .card-header{
    background-color: #2B2B2B;
+    font-size:30px;
 }
 
 .card-body{
     background-color: #382020;
+    font-size:18px;
 }
 
 .object-type{
@@ -48,6 +67,7 @@ body{
     padding: 3%;
     position:absolute;
     min-width: 700px;
+
 }
 
 .func-var-div{
@@ -59,4 +79,42 @@ body{
     padding-bottom: 1.7%;
     font-family: lato;
     font-weight: normal;
+    font-size: 30px;
+}
+
+.glyphicon{ font-size: 20px;}
+
+.title{font-size: 40px; font-weight: bold;}
+
+.author-name{font-size:40px; font-weight:lighter;}
+
+.version{font-size: 15px; font-style: italic}
+
+.lastupdate{font-size: 15px;}
+
+.home_button{padding:1.2%;}
+
+@media screen and (max-width: 320px){
+    .core{min-width: 100px;}
+}
+
+@media screen and (max-width: 480px){
+    .core{min-width: 140px;}
+}
+
+@media screen and (max-width: 360px){
+    .core{min-width: 100px;}
+}
+
+@media screen and (max-width: 812px){
+    .core{min-width: 200px;}
+}
+
+@media screen and (max-width: 1600px){
+    .core{min-width: 600px;}
+}
+
+
+@media screen and (max-width: 2160px){
+    .core{min-width: 1000px;}
 }

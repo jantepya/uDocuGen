@@ -4,26 +4,64 @@
     <meta charset="UTF-8">
     <title> Project Name Goes Here</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src = "js/script.js"></script>
+
 
 </head>
 
 <body>
-<div class = "nav">
-    <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
-    </ol>
+
+<div class = "home_button">
+    <button type="button" class="home_button btn btn-outline-light"><span class="glyphicon glyphicon-home"></span></button>
+</div>
+
+
+
+<div class = "home">
+    <div class = "container title-container">
+    <div class = "row">
+        <div class="col-">
+        <h1 class = "title">TITLE</h1>
+        </div>
+        <div class = "col-sm">
+        <h1 class = "author-name">AUTHOR NAME</h1>
+        </div>
+        <div class = "col-sm">
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "col- version">
+            <p>VERSION</p>
+        </div>
+        <div class = "col-sm lastupdate">
+            <p>Last Updated: </p>
+        </div>
+        <div class = "col-sm">
+
+        </div>
+    </div>
+    </div>
+    <div class = "container files-container">
+        <div class = "row" >
+            <div class = "col-sm files" id = "#class_name">Test</div>
+            <div class = "col-lg files" >Description</div>
+            <div class = "w-100"></div>
+        </div>
+    </div>
+</div>
+
+
 
 </div>
-<div class="core" style = "z-index:0" id = "UNIQUEID">
+<div class="core" style = "z-index:0; opacity: 0;" id = "class_name">
 
     <h1 class="class-name">Class name </h1>
     <hr>
