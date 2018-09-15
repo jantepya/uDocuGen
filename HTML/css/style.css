@@ -5,6 +5,15 @@ body{
     background-color: #232323
 }
 
+
+a{
+    text-decoration: none;
+    color: transparent;
+}
+
+a:hover, focus{color:transparent}
+
+
 .files{
     padding: 1.5%;
     margin: 0.2%;
@@ -56,6 +65,12 @@ body{
 }
 
 .object-type{
+    color: white;
+    font-family: lato;
+    font-weight:100;
+}
+
+.scope-type{
     color: white;
     font-family: lato;
     font-weight:100;
