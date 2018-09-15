@@ -198,3 +198,7 @@ C:\Users\Jon\Documents\New Unity Project\obj\Debug\Assembly-CSharp-Editor.csproj
 C:\Users\Jon\Documents\New Unity Project\obj\Debug\Assembly-CSharp-Editor.csproj.CopyComplete
 C:\Users\Jon\Documents\New Unity Project\obj\Debug\Assembly-CSharp-Editor.dll
 C:\Users\Jon\Documents\New Unity Project\obj\Debug\Assembly-CSharp-Editor.pdb
+C:\Users\Jon\Desktop\v1\uDocuGen\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+C:\Users\Jon\Desktop\v1\uDocuGen\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+C:\Users\Jon\Desktop\v1\uDocuGen\obj\Debug\Assembly-CSharp-Editor.dll
+C:\Users\Jon\Desktop\v1\uDocuGen\obj\Debug\Assembly-CSharp-Editor.pdb
