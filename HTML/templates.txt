@@ -1,0 +1,77 @@
+## stop inserting when the next #  (hashtag with space is found)
+
+
+
+# base_template
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Project Name Goes Here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+#free_space
+
+</html>
+
+
+
+# body_begin
+
+<body>
+<div class="core">
+
+
+#free_space
+
+</div>
+</body>
+
+
+#  accordion_container
+
+    <div id="accordion">
+        #free_space
+    </div>
+
+
+# card_content
+    <div class="card-header">
+        <a class="card-link" data-toggle="collapse" href="#collapseOne"> #big_description</a>
+    </div>
+    <div id="#collapseName" class="collapse show" data-parent="#accordion">
+        <div class="card-body">
+            #body_content
+        </div>
+    </div>
+
+
+
+# selected_file_start
+
+    <h1 class="class-name">#class_name</h1>
+        <br class="big-break">
+        <div>
+            <h3 class="func-var-header">Variables</h3>
+             <div class="#var-type container">
+                #accordion_insertion
+             </div>
+        </div>
+
+        <div>
+            <h3 class="func-var-header">Functions</h3>
+            <div class="#var-type container">
+                 #accordion_insertion
+            </div>
+        </div>
+     </h1>
+
+#
+
