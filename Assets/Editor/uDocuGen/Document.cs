@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.IO;
 using UnityEngine;
+
 namespace uDocuGen
 {
     public class Document
@@ -13,11 +14,12 @@ namespace uDocuGen
 
         public IList<Obj> Files = new List<Obj>();
 
-        public Document() { }
+        public string ProjectTitle = "uDocuGen";
 
         public void GenerateDocument()
         {
             this.ParseAssets(dataPath);
+            Stitch();
         }
 
         private void ParseAssets(string path)
@@ -50,7 +52,7 @@ namespace uDocuGen
 
             string description = "";
             string allText;
-            char[] trimValues = { ' ', '\t', '*' };
+            char[] trimValues = {' ', '\t', '*'};
 
             while ((allText = reader.ReadLine()) != null)
             {
@@ -69,6 +71,7 @@ namespace uDocuGen
                         {
                             break;
                         }
+
                         description = description + allText;
                     }
                 }
@@ -81,13 +84,15 @@ namespace uDocuGen
                         {
                             break;
                         }
+
                         description = description + allText;
                     }
                 }
                 else if (allText.Contains("class"))
                 {
                     obj.state = allText.Substring(0, allText.IndexOf("class"));
-                    obj.name = allText.Substring(allText.IndexOf("class") + 5, allText.IndexOf(":") - obj.state.Length - 5);
+                    obj.name = allText.Substring(allText.IndexOf("class") + 5,
+                        allText.IndexOf(":") - obj.state.Length - 5);
                     obj.inheritance = allText.Substring(allText.IndexOf(":"));
                     obj.description = description;
                     description = "";
@@ -113,6 +118,7 @@ namespace uDocuGen
                             {
                                 v.name = allText.Substring(second, allText.Length - second - 1);
                             }
+
                             /*
                             Debug.Log(v.state);
                             Debug.Log(v.type);
@@ -131,12 +137,14 @@ namespace uDocuGen
                             {
                                 v.name = allText.Substring(first, allText.Length - first - 1);
                             }
+
                             /*
                             Debug.Log(v.state);
                             Debug.Log(v.type);
                             Debug.Log(v.name);
                             */
                         }
+
                         v.description = description;
                         obj.variables.Add(v);
                         description = "";
@@ -171,19 +179,26 @@ namespace uDocuGen
                             Debug.Log(f.name);
                             */
                         }
+
                         f.description = description;
                         obj.functions.Add(f);
                         description = "";
                     }
                 }
             }
+
             reader.Close();
             this.Files.Add(obj);
         }
 
-        public void Save()
+        public void Stitch()
         {
-
+            string finalDoc = "";
+            Dictionary<string, string> base_temp = new Dictionary<string, string>();
+            base_temp["#Project_Title"] = ProjectTitle;
+            TemplateParser templateParser = new TemplateParser();
+            finalDoc = templateParser.ParseRegion("base_template", base_temp);
+            Debug.Log(finalDoc);
         }
     }
 }

@@ -6,12 +6,13 @@ using Random = System.Random;
 
 namespace uDocuGen
 {
-    public class TemplateParser : MonoBehaviour
+    public class TemplateParser 
     {
         public string[] Template; 
         public TemplateParser()
         {
             string templatePath = Application.dataPath + "//Editor//uDocuGen//HTML//templates.txt";
+            Debug.Log(File.ReadAllText(templatePath));
             Template = File.ReadAllLines(templatePath);
         }
 
@@ -35,14 +36,15 @@ namespace uDocuGen
                     {
                        int tagIndex = line.IndexOf( "#");
                        string specifiedTag = "#";
-                       int finalIndex = tagIndex;
+                       int finalIndex = tagIndex+1;
 
-                       while (Char.IsLetter(line[finalIndex]))
+                       while (Char.IsLetter(line[finalIndex]) || line[finalIndex] == '_')
                        {
                            specifiedTag += line[finalIndex];
+                           Debug.Log("Current char: "+ line[finalIndex]);
                            finalIndex++;
                        }
-                       Console.WriteLine(specifiedTag);
+                       Debug.Log("Specified Tag:" + specifiedTag);
                         try
                         {
                             string replacedText = line.Substring(0, tagIndex) + replace[specifiedTag] +
@@ -51,7 +53,7 @@ namespace uDocuGen
                         }
                         catch (Exception e)
                         {
-                            print(e);
+                            Debug.Log(e);
                         }
                         
                     }
@@ -65,11 +67,12 @@ namespace uDocuGen
             return finalStr;
         }
 
-        public string GenerateUniqueID(string name)
+        public static string GenerateUniqueID(string name)
         {
             Random rand = new Random();
 
             return name + rand.Next(100000000).ToString();
         }
+
     }
 }
