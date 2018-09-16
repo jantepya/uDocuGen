@@ -5,52 +5,60 @@ namespace uDocuGen
 {
     public struct Variable
     {
-        public string description;
+        public string Description;
 
-        public string name;
+        public string Name;
 
-        public string type;
+        public string Type;
 
-        public string state;
+        public string Scope;
+
+        public string UniqueID;
     }
 
     public struct Function
     {
-        public string description;
+        public string Description;
 
-        public string name;
+        public string Name;
 
-        public string type;
+        public string Type;
 
-        public string state;
+        public string Scope;
 
-        public string arguments;
+        public string Arguments;
+
+        public string UniqueID;
+
     }
 
     public class Obj : Document
     {
 
-        public string filePath;
+        public string FilePath;
 
-        public string description;
+        public string Description;
 
-        public string name;
+        public string Name;
 
-        public string inheritance;
+        public string Inheritance;
 
-        public string state;
+        public string Scope;
 
-        public IList<Variable> variables = new List<Variable>();
+        public string UniqueId;
 
-        public IList<Function> functions = new List<Function>();
+        public IList<Variable> Variables = new List<Variable>();
+
+        public IList<Function> Functions = new List<Function>();
 
         public Obj(string path)
         {
-            filePath = path;
-            description = "";
-            name = "";
-            inheritance = "";
-            state = "";
+            FilePath = path;
+            Description = "";
+            Name = "";
+            Inheritance = "";
+            Scope = "";
+            UniqueId = "";
         }
 
     }

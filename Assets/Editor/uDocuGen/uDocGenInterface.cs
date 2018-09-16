@@ -7,12 +7,12 @@ using UnityEditor;
 namespace uDocuGen
 {
 
-    public class uDocGenInterface : ScriptableWizard
+    public class UDocGenInterface : ScriptableWizard
     {
         [MenuItem("Tools/Generate Documentation")]
-        static void uDocGenInterfaceWizard()
+        static void UDocGenInterfaceWizard()
         {
-            ScriptableWizard.DisplayWizard<uDocGenInterface>("Generate Documentation", "Generate");
+            ScriptableWizard.DisplayWizard<UDocGenInterface>("Generate Documentation", "Generate");
         }
 
         // Called by Generate Button

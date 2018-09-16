@@ -6,73 +6,100 @@ using Random = System.Random;
 
 namespace uDocuGen
 {
-    public class TemplateParser 
+    public class TemplateParser
     {
-        public string[] Template; 
+        public readonly string[] Template;
+
         public TemplateParser()
         {
-            string templatePath = Application.dataPath + "//Editor//uDocuGen//HTML//templates.txt";
+            var templatePath = Application.dataPath + "//Editor//uDocuGen//HTML//templates.txt";
             Debug.Log(File.ReadAllText(templatePath));
             Template = File.ReadAllLines(templatePath);
         }
 
         // Filter down part of the template and replace accordingly
-        public string ParseRegion(string region_name, Dictionary<string,string> replace)
+        public string ParseRegion(string regionName, Dictionary<string, string> replace)
         {
-            string finalStr = "";
-            bool correctBlock = false;
-            foreach (string line in Template)
-            {
+            var finalStr = "";
+            var correctBlock = false;
+            foreach (var line in Template)
                 //Find region
-                if (line.Contains(region_name))
+                if (line.Contains(regionName))
                 {
-                    correctBlock = true; 
-                } else if (line.Contains("# ")) //end if out of region
+                    correctBlock = true;
+                }
+                 else if (line.Contains("# ") && correctBlock) //end if out of region
                 {
                     return finalStr;
-                } else if (correctBlock)
+                }
+                else if (correctBlock)
                 {
                     if (line.Contains("#"))
                     {
-                       int tagIndex = line.IndexOf( "#");
-                       string specifiedTag = "#";
-                       int finalIndex = tagIndex+1;
+                        var indicies = new List<int>();
+                        for (var i = 0; i < line.Length; i++)
+                            if (line[i] == '#')
+                                indicies.Add(i);
 
-                       while (Char.IsLetter(line[finalIndex]) || line[finalIndex] == '_')
-                       {
-                           specifiedTag += line[finalIndex];
-                           Debug.Log("Current char: "+ line[finalIndex]);
-                           finalIndex++;
-                       }
-                       Debug.Log("Specified Tag:" + specifiedTag);
-                        try
+                        finalStr += line;
+                        foreach (var tagIndex in indicies)
                         {
-                            string replacedText = line.Substring(0, tagIndex) + replace[specifiedTag] +
-                                                  line.Substring(finalIndex + 1);
-                            finalStr += replacedText;
+                            var specifiedTag = "#";
+                            var finalIndex = tagIndex + 1;
+
+                            Debug.Log("Current line: " + line);
+
+                            while (finalIndex < line.Length &&
+                                   (char.IsLetter(line[finalIndex]) || line[finalIndex] == '_'))
+                            {
+                                specifiedTag += line[finalIndex];
+                                //Debug.Log("Current char: "+ line[finalIndex]);
+                                finalIndex++;
+                            }
+
+                            Debug.Log("Specified Tag:" + specifiedTag);
+                            try
+                            {
+                                specifiedTag.Replace(" ", String.Empty);
+                                foreach (var key in replace.Keys) Debug.Log("Key " + key);
+                                if (specifiedTag != "#accordion")
+                                    finalStr = finalStr.Replace(specifiedTag, replace[specifiedTag]);
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.Log(e);
+                            }
                         }
-                        catch (Exception e)
-                        {
-                            Debug.Log(e);
-                        }
-                        
                     }
                     else
                     {
                         finalStr += line;
                     }
                 }
-            }
 
             return finalStr;
         }
 
-        public static string GenerateUniqueID(string name)
+        public string ParseRegion(string regionName)
         {
-            Random rand = new Random();
+            var finalStr = "";
+            var correctBlock = false;
+            foreach (var line in Template)
+                //Find region
+                if (line.Contains(regionName))
+                    correctBlock = true;
+                else if (line.Contains("# ")) //end if out of region
+                    return finalStr;
+                else if (correctBlock) finalStr += line;
 
-            return name + rand.Next(100000000).ToString();
+            return finalStr;
         }
 
+        public static string GenerateUniqueId(string name)
+        {
+            var rand = new Random();
+
+            return string.Format("{0}{1}", name, rand.Next(100000000));
+        }
     }
 }

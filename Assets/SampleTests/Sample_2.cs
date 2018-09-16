@@ -6,7 +6,7 @@ using UnityEngine;
  * but also
  * other stuff
  */
-public class Sample_2 : MonoBehaviour {
+public class Sample2 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start ()
@@ -14,7 +14,7 @@ public class Sample_2 : MonoBehaviour {
 		
 	}
 
-    void dss(char g)
+    void Dss(char g)
     {
 
     }

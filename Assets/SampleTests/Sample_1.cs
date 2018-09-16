@@ -10,22 +10,22 @@ using UnityEngine;
 /// OTHER STUUUUF
 /// </summary>
 
-public class Sample_1 : MonoBehaviour {
+public class Sample1 : MonoBehaviour {
 
-    public int c;
+    public int C;
 
-    int a;
+    int _a;
 
-    int j = 5;
+    int _j = 5;
 
     public IList<int> Files = new List<int>();
 
-    private int numberdo()
+    private int Numberdo()
     {
         return 0;
     }
 
-    public void dostuff(int a)
+    public void Dostuff(int a)
     {
 
     }

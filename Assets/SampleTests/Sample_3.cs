@@ -6,7 +6,7 @@ using UnityEngine;
  * 
  * 
  */
-public class Sample_3 : MonoBehaviour {
+public class Sample3 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

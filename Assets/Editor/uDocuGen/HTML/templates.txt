@@ -30,18 +30,14 @@
     <button type="button" class="btn btn-outline-light"><span class="glyphicon glyphicon-home"></span></button>
 </div>
 
-#free_space
-
 # body_end
-
 
 </body>
 
 
-#  accordion_container
+# accordion_container
 
     <div id="accordion">
-		
         #free_space
     </div>
 
@@ -60,21 +56,20 @@
     </div>
 
 
-
 # selected_file_start
 <div class="core" style = "opacity: 0;" id = "#UNIQUEID">
     <h1 class="class-name">#class_name</h1>
         <div class = "func-var-div">
             <h3 class="func-var-header">Variables</h3>
-             <div class="#var-type container">
-                #accordion_insertion 
+             <div class="container">
+                #accordion_insertion_var 
              </div>
         </div>
 
         <div class = "func-var-div">
             <h3 class="func-var-header">Functions</h3>
-            <div class="#var-type container">
-                 #accordion_insertion
+            <div class="container">
+                 #accordion_insertion_func
             </div>
         </div>
 </div> 
@@ -107,7 +102,7 @@
     </div>
     <div class = "container files-container">
             <div class = "row" >
-                #free_space
+                #free_space                      
             </div>
     </div>
 </div>
