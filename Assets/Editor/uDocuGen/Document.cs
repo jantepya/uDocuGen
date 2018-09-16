@@ -11,6 +11,14 @@ namespace uDocuGen
 {
     public class Document
     {
+        public void init(string PrjTitle, string authorName, string title, string version, string lastUpdate)
+        {
+            this.ProjectTitle = PrjTitle;
+            this.AuthorName = authorName;
+            this.Title = title;
+            this.Version = version;
+            this.LastUpdate = lastUpdate;
+        }
 
         public string DataPath = Application.dataPath;
 
@@ -405,10 +413,6 @@ namespace uDocuGen
             {
                 Debug.LogError(e);
             }
-            
         }
-
-            
-        
     }
 }
