@@ -9,7 +9,7 @@ var cardIDs = "";
     });
 
     $(".files").click(function(){
-        cardIDs = "#" + $(this).attr("id").toString();
+        cardIDs = "#" + $(this).attr("title").toString();
         console.log(cardIDs);
         $(".core").css("opacity",1);
         $(cardIDs).fadeIn("slow");

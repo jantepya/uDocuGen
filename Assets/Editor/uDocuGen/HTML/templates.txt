@@ -49,7 +49,7 @@
             <i class = "scope-type" style="display:inline">#scope_type</i> <p class = "object-type" style="display:inline">#object_type</p>  <p class = "reference-name" style="display:inline">#ref_name</p>
         </a>
     </div>
-    <div id = "#collapseName" class="collapse show" data-parent="#accordion">
+    <div id = "#collapseName" class="collapse" data-parent="#accordion">
         <div class="card-body">
             #body_content
         </div>
@@ -109,6 +109,6 @@
 
 # class_content
 
-    <div class = "col-sm files" id = "#UNIQUEID">#Class_Name</div>
+    <div class = "col-sm files" title = "#UNIQUEID">#Class_Name</div>
     <div class = "col-lg files-description" >#Class_Description</div>
     <div class = "w-100"></div>
