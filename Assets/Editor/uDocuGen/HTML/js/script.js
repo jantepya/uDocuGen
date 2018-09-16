@@ -10,9 +10,10 @@ var cardIDs = "";
 
     $(".files").click(function(){
         cardIDs = "#" + $(this).attr("id").toString();
+        console.log(cardIDs);
         $(".core").css("opacity",1);
         $(cardIDs).fadeIn("slow");
         $(".home").fadeOut("slow");
-        Console.log("called func");
+        console.log("called func");
       });
 });
