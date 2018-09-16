@@ -74,9 +74,9 @@ namespace uDocuGen
                             try
                             {
                                 specifiedTag = specifiedTag.Replace(" ", String.Empty);
-                                foreach (var key in replace.Keys) Debug.Log("Key " + key);
-                                if ((isHref) && specifiedTag != "#accordion")
-                                foreach (var key in replace.Keys) //Debug.Log("Key " + key);
+                                //foreach (var key in replace.Keys) Debug.Log("Key " + key);
+                                //if ((isHref) && specifiedTag != "#accordion")
+                                //foreach (var key in replace.Keys) //Debug.Log("Key " + key);
                                 if (isHref && specifiedTag != "#accordion")
 
                                 {
