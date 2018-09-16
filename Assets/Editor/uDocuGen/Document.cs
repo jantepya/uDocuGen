@@ -235,9 +235,9 @@ namespace uDocuGen
             baseTemp["#Project_Title"] = ProjectTitle;
             TemplateParser templateParser = new TemplateParser();
             finalDoc = templateParser.ParseRegion("base_template", baseTemp);
-            Debug.Log(finalDoc);
+            //Debug.Log(finalDoc);
             finalDoc += templateParser.ParseRegion("body_begin");
-            Debug.Log(finalDoc);
+            //Debug.Log(finalDoc);
             Dictionary<string, string> homeBase = new Dictionary<string, string>();
             homeBase["#author_name"] = AuthorName;
             homeBase["#Title"] = Title;
@@ -249,10 +249,10 @@ namespace uDocuGen
             {
                 TemplateParser tempParse = new TemplateParser();
                 string className = obj.Name;
-                Debug.Log("Class Name "+ className);
+                //Debug.Log("Class Name "+ className);
                 string classDescription = obj.Description;
                 string uniqueid = obj.UniqueId;
-                Debug.Log("Unique ID" + uniqueid);
+                //Debug.Log("Unique ID" + uniqueid);
                 Dictionary<string, string> essentials = new Dictionary<string, string>();
                 essentials["#UNIQUEID"] = uniqueid;
                 essentials["#Class_Description"] = classDescription;
@@ -260,7 +260,7 @@ namespace uDocuGen
                 try
                 {
                     string htmlRep = tempParse.ParseRegion("class_content", essentials);
-                    Debug.Log("htmlrep: " + htmlRep + " Class name: " + className);
+                    //Debug.Log("htmlrep: " + htmlRep + " Class name: " + className);
                     list.Add(htmlRep);
                 }
                 catch (Exception e)
@@ -282,7 +282,7 @@ namespace uDocuGen
             {
                 Debug.Log("issue " + e);
             }
-            Debug.Log(finalDoc);
+            //Debug.Log(finalDoc);
             Dictionary<string, string> selected_file_start = new Dictionary<string, string>();
             list.Clear();
             foreach (Obj obj in Files)
@@ -302,7 +302,7 @@ namespace uDocuGen
                     card_content["#object_type"] = var.Type;
                     card_content["#ref_name"] = var.Name;
                     card_content["#body_content"] = var.Description;
-                    Debug.Log("Var name: " + var.Name + "Var Description: " + var.Description);
+                    //Debug.Log("Var name: " + var.Name + "Var Description: " + var.Description);
                     html_rep = templateParser.ParseRegion("card_content", card_content);
                     variableCardList.Add(html_rep);
                 }
@@ -348,21 +348,67 @@ namespace uDocuGen
             {
                 finalDoc += card; 
             }
-            Debug.Log("Body End " + templateParser.ParseRegion("body_end"));
+            //Debug.Log("Body End " + templateParser.ParseRegion("body_end"));
             
             finalDoc += templateParser.ParseRegion("body_end");
             finalDoc += templateParser.ParseRegion("base_end");
-            Debug.Log("Final output: " + finalDoc);
+            //Debug.Log("Final output: " + finalDoc);
             return finalDoc;
 
         }
 
+        public string ReverseSlashes(string dir)
+        {
+            string path = "";
+            for (int i = 0; i < dir.Length; i += 1)
+            {
+                if (dir[i] == '/')
+                {
+                    path += "\\";
+                }
+                else
+                {
+                    path += dir[i];
+                }
+            }
+            return path;
+        }
+
         public void Save(string saveDir)
         {
-            FileStream file;
+            try
+            {
+                string Output = ReverseSlashes(saveDir) + "\\" + this.Title;
 
-            if (File.Exists(saveDir)) file = File.OpenWrite(saveDir);
-            else file = File.Create(saveDir + ".html");
+                string CSSToCopy = ReverseSlashes(Application.dataPath) + "\\Editor\\uDocuGen\\HTML\\css\\style.css";
+                string JSToCopy = ReverseSlashes(Application.dataPath) + "\\Editor\\uDocuGen\\HTML\\js\\.script.js";
+
+                if (!Directory.Exists(Output))
+                {
+                    Directory.CreateDirectory(Output);
+                }
+                File.WriteAllText(Output + "\\test.html", outputBlock);
+
+                if (!Directory.Exists(Output + "\\css\\"))
+                {
+                    Directory.CreateDirectory(Output + "\\css\\");
+                }
+                File.Copy(CSSToCopy, Output + "\\css\\" + Path.GetFileName(CSSToCopy));
+
+                if (!Directory.Exists(Output + "\\js\\"))
+                {
+                    Directory.CreateDirectory(Output + "\\js\\");
+                }
+                File.Copy(JSToCopy, Output + "\\js\\" + Path.GetFileName(JSToCopy));
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+            
         }
+
+            
+        
     }
 }

@@ -13,7 +13,7 @@ namespace uDocuGen
         public TemplateParser()
         {
             var templatePath = Application.dataPath + "//Editor//uDocuGen//HTML//templates.txt";
-            Debug.Log(File.ReadAllText(templatePath));
+            //Debug.Log(File.ReadAllText(templatePath));
             Template = File.ReadAllLines(templatePath);
         }
 
@@ -69,11 +69,11 @@ namespace uDocuGen
                                 finalIndex++;
                             }
 
-                            Debug.Log("Specified Tag:" + specifiedTag);
+                            //Debug.Log("Specified Tag:" + specifiedTag);
                             try
                             {
                                 specifiedTag = specifiedTag.Replace(" ", String.Empty);
-                                foreach (var key in replace.Keys) Debug.Log("Key " + key);
+                                foreach (var key in replace.Keys) //Debug.Log("Key " + key);
                                 if (isHref && specifiedTag != "#accordion")
                                 {
                                     finalStr = finalStr.Replace(specifiedTag, "#" + replace[specifiedTag]);
@@ -116,7 +116,10 @@ namespace uDocuGen
         {
             var rand = new Random();
             string id = string.Format("{0}{1}", name, rand.Next(100000000));
-            return id.Replace(" ", string.Empty);
+            id = id.Replace(" ", string.Empty);
+            id = id.Replace("(", string.Empty);
+            id = id.Replace(")", string.Empty);
+            return id;
         }
     }
 }
