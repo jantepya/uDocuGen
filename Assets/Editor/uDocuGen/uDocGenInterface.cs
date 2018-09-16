@@ -13,23 +13,32 @@ namespace uDocuGen
             EditorWindow.GetWindow(typeof(uDocGenInterface));
         }
 
-        public string projectName = "";
-        public string authorName = "";
-        public string saveDirectory = "";
-        public string docuTitle = "";
-        public string version = "";
-        public string LastUpdate = "";
-        public string status = "";
-
+        public string projectName;
+        public string authorName;
+        public string saveDirectory;
+        public string docuTitle;
+        public string version;
+        public string LastUpdate;
+        public string status;
+        
         public GUIContent ButtonLabel = new GUIContent("Choose a Directory");
         public string savePath = "";
 
-        void OnGUI()
+        void OnEnable()
         {
-            
             titleContent = new GUIContent("uDocuGen");
-            minSize = new Vector2(215,310);
+            minSize = new Vector2(215, 310);
             projectName = Application.productName;
+            authorName = "Jonathan and Eric";
+            saveDirectory = "";
+            docuTitle = "uDocuGen";
+            version = "1.0.0";
+            LastUpdate = "15/9/2018";
+            status = "";
+        }
+
+        void OnGUI()
+        {        
             GUILayout.Label("Project Name", EditorStyles.boldLabel);
             projectName = GUILayout.TextField(projectName);
             GUILayout.Label("Author", EditorStyles.boldLabel);
@@ -48,22 +57,31 @@ namespace uDocuGen
             }
             EditorGUILayout.Separator();
             EditorGUILayout.Separator();
-
             if (GUILayout.Button("Generate"))
             {
-                Debug.Log("Generating Files");
-                Document doc = new Document();
-                if (doc.GenerateDocument())
+                if (savePath == "")
                 {
-                    Debug.Log("Saving:" + savePath);
-                    doc.Save(savePath);
-                    status = "Documentation Complete";
-                    Debug.Log("Saving Complete");
+                    Debug.Log("A Directory needs to be selected");
+                    status = "Choose an output directory";
                 }
                 else
                 {
-                    status = "Error: Could not Generate Document";
+                    Debug.Log("Generating Files");
+                    Document doc = new Document();
+                    doc.init(projectName, authorName, docuTitle, version, LastUpdate);
+                    if (doc.GenerateDocument())
+                    {
+                        Debug.Log("Saving:" + savePath);
+                        doc.Save(savePath);
+                        status = "Documentation Complete";
+                        Debug.Log("Saving Complete");
+                    }
+                    else
+                    {
+                        status = "Error: Could not Generate Document";
+                    }
                 }
+                
             }
             GUILayout.Label(status, EditorStyles.boldLabel);
         }

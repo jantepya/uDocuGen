@@ -11,6 +11,14 @@ namespace uDocuGen
 {
     public class Document
     {
+        public void init(string PrjTitle, string authorName, string title, string version, string lastUpdate)
+        {
+            this.ProjectTitle = PrjTitle;
+            this.AuthorName = authorName;
+            this.Title = title;
+            this.Version = version;
+            this.LastUpdate = lastUpdate;
+        }
 
         public string DataPath = Application.dataPath;
 
@@ -352,10 +360,8 @@ namespace uDocuGen
             
             finalDoc += templateParser.ParseRegion("body_end");
             finalDoc += templateParser.ParseRegion("base_end");
-<<<<<<< HEAD
-=======
+
             //Debug.Log("Final output: " + finalDoc);
->>>>>>> 7ba681e16b1a36ae4b16a898816f034f789d83b9
             return finalDoc;
 
         }
@@ -408,10 +414,6 @@ namespace uDocuGen
             {
                 Debug.LogError(e);
             }
-            
         }
-
-            
-        
     }
 }
