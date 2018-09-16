@@ -329,7 +329,6 @@ namespace uDocuGen
             
             finalDoc += templateParser.ParseRegion("body_end");
             finalDoc += templateParser.ParseRegion("base_end");
-            Debug.Log("Final output: " + finalDoc);
             return finalDoc;
 
         }

@@ -48,9 +48,10 @@ namespace uDocuGen
 
                             try
                             {
-                                if (tagIndex - 6 > 0 && line.Substring(tagIndex - 6, 6).Contains("href"))
+                                if (tagIndex - 6 > 0 && ((line.Substring(tagIndex - 7, 7).Contains("href"))))
                                 {
                                     isHref = true;
+          
                                 }
                             }
                             catch (Exception e)
@@ -74,7 +75,7 @@ namespace uDocuGen
                             {
                                 specifiedTag = specifiedTag.Replace(" ", String.Empty);
                                 foreach (var key in replace.Keys) Debug.Log("Key " + key);
-                                if (isHref && specifiedTag != "#accordion")
+                                if ((isHref) && specifiedTag != "#accordion")
                                 {
                                     finalStr = finalStr.Replace(specifiedTag, "#" + replace[specifiedTag]);
                                 }
@@ -116,7 +117,10 @@ namespace uDocuGen
         {
             var rand = new Random();
             string id = string.Format("{0}{1}", name, rand.Next(100000000));
-            return id.Replace(" ", string.Empty);
+            id = id.Replace(" ", string.Empty);
+            id = id.Replace("(", string.Empty);
+            id = id.Replace(")", string.Empty);
+            return id;
         }
     }
 }

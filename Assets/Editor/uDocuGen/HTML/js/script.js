@@ -7,8 +7,10 @@ $(document).ready(function(){
     });
 
     $(".files").click(function(){
+        var cardIDs = $(this).attr("id").toString();
         $(".core").css("opacity",1);
-        $($(this).attr('id').toString()).fadeIn("slow");
+        $(cardIDs).fadeIn("slow");
         $(".home").fadeOut("slow");
+        Console.log("called func");
       });
 });
