@@ -13,7 +13,7 @@ namespace uDocuGen
         public TemplateParser()
         {
             var templatePath = Application.dataPath + "//Editor//uDocuGen//HTML//templates.txt";
-            Debug.Log(File.ReadAllText(templatePath));
+            //Debug.Log(File.ReadAllText(templatePath));
             Template = File.ReadAllLines(templatePath);
         }
 
@@ -70,12 +70,17 @@ namespace uDocuGen
                                 finalIndex++;
                             }
 
-                            Debug.Log("Specified Tag:" + specifiedTag);
+                            //Debug.Log("Specified Tag:" + specifiedTag);
                             try
                             {
                                 specifiedTag = specifiedTag.Replace(" ", String.Empty);
+<<<<<<< HEAD
                                 foreach (var key in replace.Keys) Debug.Log("Key " + key);
                                 if ((isHref) && specifiedTag != "#accordion")
+=======
+                                foreach (var key in replace.Keys) //Debug.Log("Key " + key);
+                                if (isHref && specifiedTag != "#accordion")
+>>>>>>> 7ba681e16b1a36ae4b16a898816f034f789d83b9
                                 {
                                     finalStr = finalStr.Replace(specifiedTag, "#" + replace[specifiedTag]);
                                 }
