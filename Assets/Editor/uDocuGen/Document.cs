@@ -279,15 +279,17 @@ namespace uDocuGen
                     card_content["#object_type"] = var.Type;
                     card_content["#ref_name"] = var.Name;
                     card_content["#body_content"] = var.Description;
+                    Debug.Log("Var name: " + var.Name + "Var Description: " + var.Description);
                     html_rep = templateParser.ParseRegion("card_content", card_content);
                     variableCardList.Add(html_rep);
                 }
 
+                accordian_insertion["#free_space"] = "";
                 foreach (string card in variableCardList)
                 {
                     accordian_insertion["#free_space"] += card;
                 }
-                string variablesAccordion = templateParser.ParseRegion("accordion_container");
+                string variablesAccordion = templateParser.ParseRegion("accordion_container", accordian_insertion);
                 selected_file_start["#accordion_insertion_var"] = variablesAccordion;
 
 
@@ -306,11 +308,12 @@ namespace uDocuGen
                     functionCardList.Add(html_rep);
                 }
 
+                accordian_insertion_func["#free_space"] = "";
                 foreach (string card in functionCardList)
                 {
                     accordian_insertion_func["#free_space"] += card;
                 }
-                string functionAccordion = templateParser.ParseRegion("accordion_container");
+                string functionAccordion = templateParser.ParseRegion("accordion_container", accordian_insertion_func);
                 selected_file_start["#accordion_insertion_func"] = functionAccordion;
 
 
@@ -322,10 +325,11 @@ namespace uDocuGen
             {
                 finalDoc += card; 
             }
-
+            Debug.Log("Body End " + templateParser.ParseRegion("body_end"));
+            
             finalDoc += templateParser.ParseRegion("body_end");
             finalDoc += templateParser.ParseRegion("base_end");
-
+            Debug.Log("Final output: " + finalDoc);
             return finalDoc;
 
         }

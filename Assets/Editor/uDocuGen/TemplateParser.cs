@@ -36,6 +36,7 @@ namespace uDocuGen
                 {
                     if (line.Contains("#"))
                     {
+                        bool isHref = false;
                         var indicies = new List<int>();
                         for (var i = 0; i < line.Length; i++)
                             if (line[i] == '#')
@@ -44,10 +45,21 @@ namespace uDocuGen
                         finalStr += line;
                         foreach (var tagIndex in indicies)
                         {
+
+                            try
+                            {
+                                if (tagIndex - 6 > 0 && line.Substring(tagIndex - 6, 6).Contains("href"))
+                                {
+                                    isHref = true;
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.Log("Line: " + line + " " + e);
+                            }
+
                             var specifiedTag = "#";
                             var finalIndex = tagIndex + 1;
-
-                            Debug.Log("Current line: " + line);
 
                             while (finalIndex < line.Length &&
                                    (char.IsLetter(line[finalIndex]) || line[finalIndex] == '_'))
@@ -60,10 +72,15 @@ namespace uDocuGen
                             Debug.Log("Specified Tag:" + specifiedTag);
                             try
                             {
-                                specifiedTag.Replace(" ", String.Empty);
+                                specifiedTag = specifiedTag.Replace(" ", String.Empty);
                                 foreach (var key in replace.Keys) Debug.Log("Key " + key);
-                                if (specifiedTag != "#accordion")
+                                if (isHref && specifiedTag != "#accordion")
+                                {
+                                    finalStr = finalStr.Replace(specifiedTag, "#" + replace[specifiedTag]);
+                                }
+                                else if (specifiedTag != "#accordion" && replace.ContainsKey(specifiedTag) && !isHref)
                                     finalStr = finalStr.Replace(specifiedTag, replace[specifiedTag]);
+                                 
                             }
                             catch (Exception e)
                             {
@@ -88,7 +105,7 @@ namespace uDocuGen
                 //Find region
                 if (line.Contains(regionName))
                     correctBlock = true;
-                else if (line.Contains("# ")) //end if out of region
+                else if (line.Contains("# ") && correctBlock) //end if out of region
                     return finalStr;
                 else if (correctBlock) finalStr += line;
 
@@ -98,8 +115,8 @@ namespace uDocuGen
         public static string GenerateUniqueId(string name)
         {
             var rand = new Random();
-
-            return string.Format("{0}{1}", name, rand.Next(100000000));
+            string id = string.Format("{0}{1}", name, rand.Next(100000000));
+            return id.Replace(" ", string.Empty);
         }
     }
 }
