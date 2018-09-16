@@ -26,28 +26,51 @@ namespace uDocuGen
 
         public string LastUpdate = "15/9/2018";
 
-        public void GenerateDocument()
+        public string outputBlock;
+
+        public bool GenerateDocument()
         {
-            this.ParseAssets(DataPath);
-            Debug.Log(Stitch());
+            try
+            {
+                if (this.ParseAssets(DataPath))
+                {
+                    outputBlock = this.Stitch();
+                }
+                return true;
+            }
+             catch (Exception e)
+            {
+                Debug.LogError(e);
+                return false;
+            }
         }
 
-        private void ParseAssets(string path)
+        private bool ParseAssets(string path)
         {
-            foreach (string item in System.IO.Directory.GetFileSystemEntries(path))
+            try
             {
-                if (path.Substring(DataPath.Length) != "\\Editor")
+                foreach (string item in System.IO.Directory.GetFileSystemEntries(path))
                 {
-                    if (System.IO.Directory.Exists(item))
+                    if (path.Substring(DataPath.Length) != "\\Editor")
                     {
-                        this.ParseAssets(item);
-                    }
-                    else if (item.Substring(item.Length - 3) == ".cs")
-                    {
-                        this.ParseFile(item, 0);
+                        if (System.IO.Directory.Exists(item))
+                        {
+                            this.ParseAssets(item);
+                        }
+                        else if (item.Substring(item.Length - 3) == ".cs")
+                        {
+                            this.ParseFile(item, 0);
+                        }
                     }
                 }
+                return true;
             }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                return false;
+            }
+            
         }
 
         private void ParseFile(string filePath, int readIndex)
@@ -332,6 +355,14 @@ namespace uDocuGen
             Debug.Log("Final output: " + finalDoc);
             return finalDoc;
 
+        }
+
+        public void Save(string saveDir)
+        {
+            FileStream file;
+
+            if (File.Exists(saveDir)) file = File.OpenWrite(saveDir);
+            else file = File.Create(saveDir + ".html");
         }
     }
 }

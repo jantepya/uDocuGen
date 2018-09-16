@@ -1,26 +1,66 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using uDocuGen;
 using UnityEngine;
 using UnityEditor;
 
 namespace uDocuGen
 {
-
-    public class UDocGenInterface : ScriptableWizard
+    public class uDocGenInterface : EditorWindow
     {
         [MenuItem("Tools/Generate Documentation")]
-        static void UDocGenInterfaceWizard()
+        public static void ShowWindow()
         {
-            ScriptableWizard.DisplayWizard<UDocGenInterface>("Generate Documentation", "Generate");
+            EditorWindow.GetWindow(typeof(uDocGenInterface));
         }
 
-        // Called by Generate Button
-        // Creates new Document Object
-        void OnWizardCreate()
+        public string projectName;
+        public string authorName;
+        public string saveDirectory;
+        public string docuTitle;
+        public string version;
+        public string LastUpdate;
+        public string status = "";
+
+        public GUIContent ButtonLabel = new GUIContent("Choose a Directory");
+        
+        void OnGUI()
         {
-            Document doc = new Document();
-            doc.GenerateDocument();
+            titleContent = new GUIContent("uDocuGen");
+            minSize = new Vector2(215,310);
+            GUILayout.Label("Project Name", EditorStyles.boldLabel);
+            projectName = GUILayout.TextField(Application.productName);
+            GUILayout.Label("Author", EditorStyles.boldLabel);
+            authorName = GUILayout.TextField("");
+            GUILayout.Label("Document Title", EditorStyles.boldLabel);
+            docuTitle = GUILayout.TextField("");
+            GUILayout.Label("Version", EditorStyles.boldLabel);
+            version = GUILayout.TextField("");
+            GUILayout.Label("LastUpdate", EditorStyles.boldLabel);
+            LastUpdate = GUILayout.TextField("");
+            
+            GUILayout.Label("Directory", EditorStyles.boldLabel);
+            if (EditorGUILayout.DropdownButton(ButtonLabel, FocusType.Passive))
+            {
+                string _path = EditorUtility.SaveFolderPanel("Choose Where Documentation is Saved", Application.dataPath, projectName);
+                ButtonLabel = new GUIContent(_path);
+            }
+            EditorGUILayout.Separator();
+            EditorGUILayout.Separator();
+
+            if (GUILayout.Button("Generate"))
+            {
+                Document doc = new Document();
+                if (doc.GenerateDocument())
+                {
+                    doc.Save(saveDirectory);
+                    status = "Documentation Complete";
+                }
+                else
+                {
+                    status = "Error: Could not Generate Document";
+                }
+            }
+            GUILayout.Label(status, EditorStyles.boldLabel);
         }
     }
 }
