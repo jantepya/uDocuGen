@@ -1,4 +1,6 @@
-$(document).ready(function(){
+var cardIDs = "";
+
+    $(document).ready(function(){
     $(".core").hide();
 
     $(".home_button").click(function(){
@@ -7,8 +9,11 @@ $(document).ready(function(){
     });
 
     $(".files").click(function(){
+        cardIDs = "#" + $(this).attr("title").toString();
+        console.log(cardIDs);
         $(".core").css("opacity",1);
-        $($(this).attr('id').toString()).fadeIn("slow");
+        $(cardIDs).fadeIn("slow");
         $(".home").fadeOut("slow");
+        console.log("called func");
       });
 });

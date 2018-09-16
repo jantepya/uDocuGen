@@ -56,6 +56,7 @@
      <Compile Include="Assets\SampleTests\Sample_1.cs" />
      <Compile Include="Assets\SampleTests\Sample_2.cs" />
      <Compile Include="Assets\SampleTests\Sample_3.cs" />
+     <Compile Include="Assets\Test\test.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Jon/Desktop/v4/uDocuGen/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
