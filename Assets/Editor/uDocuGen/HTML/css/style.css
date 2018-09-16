@@ -48,6 +48,7 @@ a:hover, focus{color:transparent}
 .card{
     border: 1px  transparent;
     outline: 0px;
+    margin:1.2%;
 }
 
 .card:hover{
